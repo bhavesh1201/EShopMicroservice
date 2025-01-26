@@ -7,7 +7,7 @@ namespace Catalog.API.Products.UpdateProduct
 
     public record UpdateProductCommand(Guid Id ,string Name, string Discription, List<string> Category, string ImageFile, decimal Price) :ICommand<UpdateProductResult>;
 
-    public record UpdateProductResult(bool isSuccess);
+    public record UpdateProductResult(bool IsSuccess);
 
     public class UpdateProductCommandValidator :AbstractValidator<UpdateProductCommand>
     {
@@ -29,7 +29,7 @@ namespace Catalog.API.Products.UpdateProduct
             var product = await session.LoadAsync<Model.Product>(command.Id, cancellationToken);
             if (product is null) 
             {
-                throw new ProductNotFoundException();
+                throw new ProductNotFoundException(command.Id);
             
             }
 

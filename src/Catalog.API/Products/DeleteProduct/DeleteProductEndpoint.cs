@@ -15,7 +15,7 @@ namespace Catalog.API.Products.DeleteProduct
             app.MapDelete("/products/{Id}", async (Guid Id , ISender sender) =>
             {
 
-              var result=   sender.Send(new DeleteProductCommand(Id));
+              var result=   await sender.Send(new DeleteProductCommand(Id));
                 var response = result.Adapt<DeleteProductResponse>();
                 return Results.Ok(response);
 

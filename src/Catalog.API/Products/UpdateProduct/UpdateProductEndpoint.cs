@@ -6,7 +6,7 @@ namespace Catalog.API.Products.UpdateProduct
 
     public record UpdateProductRequest(Guid Id, string Name, string Discription, List<string> Category, string ImageFile, decimal Price);
 
-    public record UpdateProductResponse(bool isSuccess);
+    public record UpdateProductResponse(bool IsSuccess);
     public class UpdateProductEndpoint : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
